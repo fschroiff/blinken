@@ -1,0 +1,18 @@
+@use "sass:math";
+
+body {
+	font-family: "Courier New", Courier, monospace;
+}
+
+$max: 6000;
+$step: 2;
+$n: 500;
+@for $i from 1 through math.ceil(math.div($max, $step)) {
+	$value: ($i - 1) * $step + 1;
+	$color: hsl(math.div($i * 360, $n), 100%, 50%);
+	@media screen and (min-width: #{$value}px) {
+		body {
+			background-color: $color;
+		}
+	}
+}
